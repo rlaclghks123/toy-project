@@ -2,6 +2,8 @@ import { useState } from 'react';
 import GlobalStyle from './GlobalStyle';
 import styled, { ThemeProvider } from 'styled-components';
 import { Dark, Default } from './theme';
+import { BrowserRouter } from 'react-router-dom';
+import Routers from './components/Routers';
 
 const DarkModeBtn = styled.button`
   border: none;
@@ -29,12 +31,13 @@ function App() {
   };
 
   return (
-    <>
-      <ThemeProvider theme={isDarkMode ? Dark : Default}>
+    <ThemeProvider theme={isDarkMode ? Dark : Default}>
+      <BrowserRouter>
         <GlobalStyle />
         <DarkModeBtn onClick={togleBtn}>다크모드</DarkModeBtn>
-      </ThemeProvider>
-    </>
+        <Routers />
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
