@@ -9,7 +9,7 @@ const StyleContainer = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-  margin-top: 60px;
+  margin-top: 50px;
 `;
 
 type MainPageProps = {
