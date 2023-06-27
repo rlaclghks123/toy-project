@@ -78,16 +78,13 @@ function InfinityScroll() {
   };
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setInputValue(value);
+    setInputValue(e.target.value);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const value = e.currentTarget.querySelector('input')?.value;
+    setKeyword(inputValue);
     setInputValue('');
-
-    if (value) setKeyword(value);
   };
 
   const handleObserver = (entries: any) => {
