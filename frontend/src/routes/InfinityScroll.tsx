@@ -90,8 +90,11 @@ function InfinityScroll() {
     if (value) setKeyword(value);
   };
 
-  const nextPage = () => {
-    setPage((prev) => prev + 1);
+  const handleObserver = (entries: any) => {
+    const target = entries[0];
+    if (target.isIntersecting) {
+      setPage((prevPage) => prevPage + 1);
+    }
   };
 
   useEffect(() => {
@@ -103,15 +106,9 @@ function InfinityScroll() {
   }, [page]);
 
   useEffect(() => {
-    if (loading) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          if (entries[0].isIntersecting) nextPage();
-        },
-        { threshold: 1 }
-      );
-      if (pageEnd.current) observer.observe(pageEnd.current);
-    }
+    if (!loading) return;
+    const observer = new IntersectionObserver(handleObserver, { threshold: 1 });
+    if (pageEnd.current) observer.observe(pageEnd.current);
   }, [loading]);
 
   return (
