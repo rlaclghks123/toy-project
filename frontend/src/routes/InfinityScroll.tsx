@@ -34,6 +34,19 @@ const StyleLoading = styled.div`
   justify-content: center;
 `;
 
+const StyleSearchInput = styled.input`
+  width: 300px;
+  height: 30px;
+
+  border-radius: 10px;
+  border: none;
+
+  margin-top: 50px;
+  padding: 10px;
+
+  outline: none;
+`;
+
 interface IImgList {
   id: string;
   urls: {
@@ -64,15 +77,6 @@ function InfinityScroll() {
     result.length === 0 ? setLoading(false) : setLoading(true);
   };
 
-  // const debounce = <T extends any[]>(callback: (...args: T) => void, delay: number) => {
-  //   let timerId: number;
-  //   return (...args: T) => {
-  //     clearTimeout(timerId);
-  //     timerId = setTimeout(() => callback(...args), delay);
-  //   };
-  // };
-  // console.log('imgList : ', imglist, 'nextList :', nextList);
-
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setInputValue(value);
@@ -80,9 +84,9 @@ function InfinityScroll() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formElement = e.currentTarget;
-    const value = formElement.querySelector('input')?.value;
+    const value = e.currentTarget.querySelector('input')?.value;
     setInputValue('');
+
     if (value) setKeyword(value);
   };
 
@@ -114,7 +118,12 @@ function InfinityScroll() {
     <MainPage>
       <StyleContainer>
         <form onSubmit={handleSubmit}>
-          <input type="text" value={inputValue} onChange={handleOnChange} />
+          <StyleSearchInput
+            type="text"
+            value={inputValue}
+            onChange={handleOnChange}
+            placeholder="찾고자 하는 이미지를 검색해주세요"
+          />
         </form>
 
         <StyleImgContainer>
