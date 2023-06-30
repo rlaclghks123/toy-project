@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import NavBar from '../NavBar';
+import NavBar from '../components/NavBar';
 import { FC } from 'react';
 
 const StyleContainer = styled.div`

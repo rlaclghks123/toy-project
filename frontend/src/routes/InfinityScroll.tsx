@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import MainPage from '../components/pages/MainPage';
+import MainPage from '../pages/MainPage';
 import { useEffect, useRef, useState } from 'react';
 import { fetchImgList, fetchNextImgList } from '../utils/api';
 
