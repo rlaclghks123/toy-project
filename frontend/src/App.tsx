@@ -4,6 +4,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import { Dark, Default } from './theme';
 import { BrowserRouter } from 'react-router-dom';
 import Routers from './components/Routers';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const DarkModeBtn = styled.button`
   border: none;
@@ -30,14 +31,18 @@ function App() {
     setIsDarkMode((prev) => !prev);
   };
 
+  const queryClient = new QueryClient();
+
   return (
-    <ThemeProvider theme={isDarkMode ? Dark : Default}>
-      <BrowserRouter>
-        <GlobalStyle />
-        <DarkModeBtn onClick={togleBtn}>다크모드</DarkModeBtn>
-        <Routers />
-      </BrowserRouter>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={isDarkMode ? Dark : Default}>
+        <BrowserRouter>
+          <GlobalStyle />
+          <DarkModeBtn onClick={togleBtn}>다크모드</DarkModeBtn>
+          <Routers />
+        </BrowserRouter>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }
 

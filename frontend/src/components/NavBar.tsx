@@ -26,11 +26,11 @@ const StyleLogo = styled.div`
 `;
 
 const StyleItems = styled.div`
-  width: 80%;
   display: flex;
   align-items: center;
 
   font-size: 12px;
+  margin: 0px 20px;
 
   a {
     cursor: pointer;
@@ -48,6 +48,10 @@ function NavBar() {
       </StyleLogo>
       <StyleItems>
         <Link to="/infinityScroll">무한스크롤</Link>
+      </StyleItems>
+
+      <StyleItems>
+        <Link to="/scroll">Scroll Test</Link>
       </StyleItems>
     </StyleContainer>
   );
